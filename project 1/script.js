@@ -1,7 +1,7 @@
-function myfunction() {
-    var a = 4
-    document.getElementById("result").innerHTML=a * a
+function myFunction() {
+  document.getElementById("result").innerHTML = 
+    document.getElementById("demo").firstChild.nodeValue ;
     
+  document.getElementById("result1").innerHTML = 
+    document.getElementById("demo").childNodes[0].nodeValue ;
 }
-var text = document.getElementById("demo").innerHTML;
-        alert("The first heading is " + text);
