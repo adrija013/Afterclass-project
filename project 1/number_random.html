@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h2>Javascript Datatypes, Let keyword and loops</h2>
+        <p id="result"></p>
+        <script>
+            var i;
+            var text=" ";
+            {
+                let i=0;
+                block
+                while (i<10){
+                    text+= "The value inside the block: "+i+"</br>";
+                    i++;
+                }
+                document.getElementById("result").innerHTML = text;
+            }
+            document.write("The value of i outside the block is: "+i)
+        </script>
+    </body>
+</html>
