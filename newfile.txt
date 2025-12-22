@@ -1,0 +1,1 @@
+Opened in write and read mode.

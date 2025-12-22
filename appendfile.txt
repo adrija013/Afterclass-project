@@ -1,0 +1,1 @@
+Opened in append and read mode.
