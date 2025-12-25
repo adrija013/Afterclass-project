@@ -2,8 +2,6 @@ class Polygon:
     def area(self):
         print("Area method should be implemented by child classes")
 
-
-
 class Triangle(Polygon):
     def __init__(self, base, height):
         self.base = base
