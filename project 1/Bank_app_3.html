@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bank App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 350px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    button {
+      width: 48%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .credit {
+      background-color: #28a745;
+    }
+
+    .debit {
+      background-color: #dc3545;
+    }
+
+    .balance {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .message {
+      margin-top: 10px;
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Bank App</h2>
+
+    <div class="input-group">
+      <label>Enter Transaction Amount</label>
+      <input type="number" id="amount" placeholder="Enter amount">
+    </div>
+
+    <div class="input-group">
+      <label>Name</label>
+      <input type="text" placeholder="Enter your name">
+    </div>
+
+    <div class="input-group">
+      <label>Purpose</label>
+      <input type="text" placeholder="Purpose of transaction">
+    </div>
+
+    <div class="input-group">
+      <label>Transaction Type</label>
+      <select>
+        <option>Credit</option>
+        <option>Debit</option>
+      </select>
+    </div>
+
+    <div class="buttons">
+      <button class="credit" onclick="creditAmount()">Credit</button>
+      <button class="debit" onclick="debitAmount()">Debit</button>
+    </div>
+
+    <div id="balance" class="balance">
+      Your Account Balance is : Rs.0
+    </div>
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    let balance = 0;
+
+    function getAmount() {
+      const amt = parseFloat(document.getElementById("amount").value);
+      return isNaN(amt) ? null : amt;
+    }
+
+    function updateUI(msg = "") {
+      document.getElementById("balance").innerText =
+        "Your Account Balance is : Rs." + balance;
+      document.getElementById("message").innerText = msg;
+      document.getElementById("amount").value = "";
+    }
+
+    function creditAmount() {
+      const amt = getAmount();
+      if (amt === null || amt <= 0) {
+        updateUI("Please enter amount greater than 0");
+        return;
+      }
+
+      balance += amt;
+      updateUI("Amount credited successfully.");
+    }
+
+    function debitAmount() {
+      const amt = getAmount();
+      if (amt === null || amt <= 0) {
+        updateUI("Please enter amount greater than 0");
+        return;
+      }
+
+      if (amt > balance) {
+        updateUI("You don’t have balance. Please enter lesser amount.");
+        return;
+      }
+
+      balance -= amt;
+      updateUI("Amount debited successfully.");
+    }
+  </script>
+
+</body>
+</html>
+
+
